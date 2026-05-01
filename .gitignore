@@ -1,0 +1,10 @@
+# Python virtual environment
+venv_cardio_mbi/
+.venv_cardio_mbi/
+env_cardio_mbi/
+bin/
+lib/
+
+# Python cache
+__pycache__/
+*.py[cod]
