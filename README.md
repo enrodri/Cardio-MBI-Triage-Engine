@@ -20,7 +20,7 @@ Based on the cohort analysis ($N=152$), these thresholds guide the intake staff 
 |:---|:---|:---|
 | **< 4.0** | **Zone 1: Stable** | Likely compensated. |
 | **4.0 - 5.25** | **Zone 2: Sweet Spot** | High likelihood of complex mixed-lesion phenotypes. |
-| **5.25 - 5.5** | **Zone 3: Critical** | **85% Precision** for Critical PH ($RVSP > 60 mmHg$). |
+| **5.25 - 5.5** | **Zone 3: Critical** | **85% Precision** for Critical pulmonary hypertension ($RVSP > 60 mmHg$). |
 | **> 5.5** | Zone 4: Palliative | Pharmacological exhaustion; risk of surgical futility. |
 
 ## Technical components
@@ -28,14 +28,14 @@ Based on the cohort analysis ($N=152$), these thresholds guide the intake staff 
 ```text
 .
 ├── data/
-│   ├── raw/                                # Original CSV
-│   └── processed/                          # Post-Transformation data
+│   ├── raw/                                    # Original CSV
+│   └── processed/                              # Post-Transformation data
 ├── notebooks/
-│   ├── 01_extraction_transformation.ipynb  # Extraction & Transformation
-│   ├── 02_loading.ipynb                    # MySQL connector script
-│   └── 03_analysis.ipynb                   # Data Analysis
-├── sql/                                    # .sql scripts for database queries
-├── tableau/                                # Tableau files
-├── requirements.txt                        # Python library dependencies
+│   ├── 01_extraction_transformation.ipynb      # Extraction & Transformation
+│   ├── 02_loading.ipynb                        # MySQL connector script
+│   └── 03_analysis.ipynb                       # Data Analysis
+├── sql/                                        # .sql scripts for database queries
+├── tableau/                                    # Tableau files
+├── requirements.txt                            # Python library dependencies
 └── README.md
 ```
