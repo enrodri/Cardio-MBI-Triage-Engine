@@ -11,7 +11,10 @@
 
 ## 📊 Outcome: MBI-driven triage
 The MBI score serves as a robust proxy for anatomical complexity and critical hemodynamic compromise (AUC: 0.82).
+
 ![MBI Zones](assets/output_triage_zones.png)
+
+Based on the cohort analysis ($N=152$), these thresholds guide the intake staff in prioritizing patients.
 
 | MBI Range | Triage Zone | Clinical Interpretation |
 |:---|:---|:---|
