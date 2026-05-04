@@ -3,11 +3,20 @@
 
 | Section | Content |
 |:---|:---|
-|**Context**|International Cardiology mission phase 1 (2025 cohort) analysis of Valvular Heart Disease in León, Nicaragua|
-| **Challenge** | In this 10-day high-volume "clinical sprint," cardiologists often skip fields for healthy valves. If a valve is normal, the entry is left blank to save time. This creates Missing Not At Random (MNAR) bias. |
+| **Context**|International Cardiology mission phase 1 (2025 cohort) analysis of Valvular Heart Disease in León, Nicaragua|
+| **Challenge** | In a 10-day high-volume "clinical sprint," cardiologists often skip fields for healthy valves: If a valve is normal, the entry is left blank to save time. This creates Missing Not At Random (MNAR) bias. |
 | **Strategy** | Natural Normal Imputation: Gaussian noise centered around healthy means (e.g., RVSP $25 \pm 4 \text{ mmHg}$) to restore the statistical variance of a healthy population. |
 | **Key metric** | Medication Burden Index (MBI): A quantitative surrogate for clinical complexity and pulmonary hypertension based on pharmacological intensity. |
 | **Outcome** | MBI-based triage proposal for identification of complex and high risk patients. |
+
+## 📑 Table of Contents
+
+* [Outcome: MBI-driven Triage](#-outcome-mbi-driven-triage)
+* [Data Context](#-data-context)
+* [Technical Structure](#-technical-structure)
+* [Data Integrity and Analysis](#-data-integrity-and-analysis)
+  * [The Medication Burden Index (MBI)](#the-medication-burden-index-mbi)
+  * [Imputation to restore physiologic variance](#imputation-to-restore-physiologic-variance)
 
 ## 📊 Outcome: MBI-driven triage
 The MBI score serves as a robust proxy for anatomical complexity and critical hemodynamic compromise (AUC: 0.82).
@@ -17,11 +26,30 @@ The MBI score serves as a robust proxy for anatomical complexity and critical he
 Based on the cohort analysis, these thresholds guide the intake staff in prioritizing patients.
 
 | MBI Range | Triage Zone | Clinical Interpretation |
-|:---|:---|:---|
+|---:|:---|:---|
 | **< 4.0** | **Zone 1: Standard** | Likely compensated. |
 | **4.0 - 5.25** | **Zone 2: Complex** | Optimal intervention area: High probability of hemodynamic complexity. |
-| **5.25 - 5.5** | **Zone 3: Critical** | **85% Precision** for Critical Pulmonary Hypertension ($RVSP > 60~mmHg$). |
-| **> 5.5** | Zone 4: Futility risk | intervention risk likely outweighs potential hemodynamic gain. |
+| **5.25 - 5.5** | **Zone 3: Critical** | 85% Precision for Critical Pulmonary Hypertension ($RVSP > 60~mmHg$). |
+| **> 5.5** | **Zone 4: Futility risk** | Intervention risk likely outweighs potential hemodynamic gain. |
+
+## 🔎 Data context
+
+This project analyzes real-world clinical data from a high-volume medical mission in León, Nicaragua. The cardiology brigade operates via a structured, three-phase clinical workflow designed to bridge the gap between primary screening and advanced cardiac intervention:
+
+* **Phase 1 — General Cardiology Clinic:** High-throughput diagnostic screening, echocardiographic evaluation, and procedure prioritization.
+
+* **Phase 2 — Electrophysiology:** Arrhythmia management, including cardiac ablations and permanent pacemaker/ICD implantation.
+
+* **Phase 3 — Interventional Cardiology:** Percutaneous structural heart procedures and collaborative case reviews.
+
+This analysis focuses on the Phase 1 - 2025 Cohort. To ensure clinical relevance and focus on adult structural heart disease, the population was filtered as follows:  
+
+* **Initial Enrollment:** $N=187$ patients.
+
+* **Exclusion Criteria:** Patients $< 15$ years old or those with entirely normal echocardiographic findings (no disease criteria met).
+
+* **Final Analytical Sample:** $N=152$ patients.
+
 
 ## 💻 Technical structure
 ### Project Schema
@@ -54,7 +82,7 @@ $$MBI = \sum \left( \text{Class Weight} \times \frac{\text{Total Daily Dose}}{\t
 * **Weight:** Based on the drug's therapeutic impact for valvular heart disease (e.g., Loop Diuretics have a higher weight than Lipid Lowering agents).
 
 | Weight | Priority | Medication Classes |
-|:---|:---|:---|
+|---:|:---|:---|
 | **3.0** | Critical | Loop diuretics, pulmonary vasodilators. |
 | **2.0** | High | RAAS inhibitors, beta-blockers, SGLT2 inhibitors. |
 | **1.0** | Moderate | Anticoagulants, calcium channel blockers. |
@@ -70,6 +98,22 @@ To ensure the MBI reflects true clinical intensity rather than raw milligrams, w
 | B | **Amlodipine** | 10 mg | QD | 10 mg | 10 mg | 1.00 |
 
 **Clinical Insight:** Despite Patient A taking a higher milligram count (40mg vs 10mg), Patient B is at a higher therapeutic intensity (100% of max dose). The MBI correctly captures this higher therapeutic intensity for Patient B, which would be lost in a non-normalized dataset.
+
+### Imputation to restore physiologic variance
+
+#### The Problem: The "Silence of the Normal" (MNAR bias)
+
+In a 10-day clinical sprint, data is recorded on physical paper charts at the bedside. This workflow creates a specific form of bias: Missing Not At Random (MNAR).
+
+In high-volume brigade settings, "Missingness" is a clinical surrogate for "Normal." A cardiologist under extreme time pressure will prioritize documenting a pathological $1.2 cm^{2}$ Mitral Valve area but will likely leave the Aortic Valve field blank if it appears healthy. Standard imputation (mean/median) would erroneously assign "diseased" values to these healthy valves, leading to Model Alarmism and an overestimation of cohort severity.
+
+#### The Strategy: "Natural Normal" Imputation
+
+To preserve the statistical integrity of the cohort and prevent pathology bias, we utilize a **Natural Normal Imputation** strategy. Instead of treating nulls as errors, we treat them as "Healthy Proxies" and inject physiological noise centered around healthy clinical variables to approximate the natural variance of the population::
+
+$$X_{imp} \sim \mathcal{N}(\mu_{healthy}, \sigma^{2}_{phys})$$
+
+*Example:* For a missing Right Ventricular Systolic Pressure (RVSP), we assume a "normal" physiological state. Rather than imputing the cohort mean (which may be elevated due to severe mitral disease), we impute values centered around $25\text{ mmHg}$ with a small standard deviation ($\sigma \approx 4\text{ mmHg}$). This reflects a healthy pulmonary pressure range of $19\text{--}31\text{ mmHg}$.
 
 [//]: # (Imputation to restore physiologic variance)
 
