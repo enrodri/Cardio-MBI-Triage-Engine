@@ -17,6 +17,7 @@
 * [Data Integrity and Analysis](#-data-integrity-and-analysis)
   * [The Medication Burden Index (MBI)](#the-medication-burden-index-mbi)
   * [Imputation to restore physiologic variance](#imputation-to-restore-physiologic-variance)
+    * [Imputation sensitivity analysis](#imputation-sensitivity-analysis)
 
 ## 📊 Outcome: MBI-driven triage
 The MBI score serves as a robust proxy for anatomical complexity and critical hemodynamic compromise (AUC: 0.82).
@@ -63,6 +64,7 @@ This analysis focuses on the Phase 1 - 2025 Cohort. To ensure clinical relevance
 │   └── 03_analysis.ipynb                       # Data Analysis
 ├── sql/                                        # .sql scripts for database queries
 ├── tableau/                                    # Tableau files
+├── config.py                                   # Python configuration dictionaries
 ├── requirements.txt                            # Python library dependencies
 └── README.md
 ```
@@ -77,7 +79,7 @@ We define the score mathematically as:
 
 $$MBI = \sum \left( \text{Class Weight} \times \frac{\text{Total Daily Dose}}{\text{Maximum Daily Dose}} \right)$$
 
-* **Dose Ratio:** The total milligrams consumed by the patient in 24 hours. For example, a patient on Furosemide 40mg every 12h has a $TDD=80~mg$
+* **Dose Ratio:** The total milligrams consumed by the patient in 24 hours. For example, a patient on Furosemide 40mg every 12h has a $TDD=80~mg$.
 
 * **Weight:** Based on the drug's therapeutic impact for valvular heart disease (e.g., Loop Diuretics have a higher weight than Lipid Lowering agents).
 
@@ -109,13 +111,26 @@ In high-volume brigade settings, "Missingness" is a clinical surrogate for "Norm
 
 #### The Strategy: "Natural Normal" Imputation
 
-To preserve the statistical integrity of the cohort and prevent pathology bias, we utilize a **Natural Normal Imputation** strategy. Instead of treating nulls as errors, we treat them as "Healthy Proxies" and inject physiological noise centered around healthy clinical variables to approximate the natural variance of the population::
+To preserve the statistical integrity of the cohort and prevent pathology bias, we utilize a **Natural Normal Imputation** strategy. Instead of treating nulls as errors, we treat them as "Healthy Proxies" and inject physiological noise centered around healthy clinical variables to approximate the natural variance of the population:
 
 $$X_{imp} \sim \mathcal{N}(\mu_{healthy}, \sigma^{2}_{phys})$$
 
 *Example:* For a missing Right Ventricular Systolic Pressure (RVSP), we assume a "normal" physiological state. Rather than imputing the cohort mean (which may be elevated due to severe mitral disease), we impute values centered around $25\text{ mmHg}$ with a small standard deviation ($\sigma \approx 4\text{ mmHg}$). This reflects a healthy pulmonary pressure range of $19\text{--}31\text{ mmHg}$.
 
 [//]: # (Imputation to restore physiologic variance)
+
+#### Imputation sensitivity analysis
+We plot **measured** (grey) vs. **imputed** (blue) to visually compare the distributions before and after the injection of Gaussian noise.
+![Natural normal imputation](assets/output_kde_imputation.png)
+
+| Parameter | Measured mean | Imputed mean | Delta |
+| :- | -: | -: | :- |
+| MS MG (mmHg)  | 11.4 | 3.8 | -7.6 | 
+| AO V2 max | 4.3 | 1.6 | -2.6 | 
+| RVSP | 51.0 | 33.6 | -17.5 | 
+| LVIDd | 5.2 | 4.8 | -0.4 | 
+
+The table reveals a Significant Shift in means for hemodynamic variables, such as RVSP dropping from 51.0 mmHg (measured) to 33.6 mmHg (imputed). This delta is the mathematical proof of a **High-Severity Documentation Threshold**. It confirms that clinicians only performed time-intensive quantitative measurements when a preliminary "Quick Scan" indicated significant pathology—leaving the healthy portion of the population "silent" but present.
 
 [//]: # (MBI ROC for high RVSP)
 
