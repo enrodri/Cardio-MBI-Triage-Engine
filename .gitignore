@@ -1,3 +1,6 @@
+# Local configurations
+.env
+
 # Python virtual environment
 venv_cardio_mbi/
 .venv_cardio_mbi/
