@@ -14,6 +14,7 @@
 * [Outcome: MBI-driven Triage](#-outcome-mbi-driven-triage)
 * [Data Context](#-data-context)
 * [Technical Structure](#-technical-structure)
+* [Database schema](#-database-schema)
 * [Data Integrity and Analysis](#-data-integrity-and-analysis)
   * [The Medication Burden Index (MBI)](#the-medication-burden-index-mbi)
   * [Imputation to restore physiologic variance](#imputation-to-restore-physiologic-variance)
@@ -62,14 +63,23 @@ This analysis focuses on the Phase 1 - 2025 Cohort. To ensure clinical relevance
 │   ├── 01_extraction_transformation.ipynb      # Extraction & Transformation
 │   ├── 02_loading.ipynb                        # MySQL connector script
 │   └── 03_analysis.ipynb                       # Data Analysis
-├── sql/                                        # .sql scripts for database queries
+├── sql/                                        # SQL-related files
+│   └── schema_cardio_mbi.mwb                   # MySQL database schema
 ├── tableau/                                    # Tableau files
+├── assets/                                     # Auxiliary files for documentation
 ├── config.py                                   # Python configuration dictionaries
 ├── requirements.txt                            # Python library dependencies
 └── README.md
 ```
 
-[//]: # (Database schema)
+## 💽 Database schema and governance
+To transition this dataset from a flat file to an analytics-ready warehouse, the database layer implements a **5-table Snowflake Schema**. While this structure enforces **Third Normal Form (3NF)** compliance across core tables to eliminate update anomalies, it implements a pragmatic, **denormalized hybrid strategy** within the associative entities to optimize analytic queries:
+
+* **Entity Isolation:** Patient-level continuous demographics and baseline variables are strictly isolated within `fact_patient`, anchoring the baseline denominator ($N=152$).
+* **Nomenclature Normalization:** Dimension tables `dim_diagnoses` and `dim_medications` function as a single source of truth, enforcing clean text constraints and eliminating manual string typographical variances.
+* **Many-to-Many Resolution:** Complex multi-valvular disease records and polypharmacy exposures are decoupled into dedicated bridge tables (`bridge_diagnoses` and `bridge_medications`). This database design allows to execute localized cohort queries without duplicating core patient parameters.  
+
+![Database schema](assets/database_schema.png)
 
 ## 📈 Data integrity and analysis
 ### The Medication Burden Index (MBI)
@@ -116,8 +126,6 @@ To preserve the statistical integrity of the cohort and prevent pathology bias, 
 $$X_{imp} \sim \mathcal{N}(\mu_{healthy}, \sigma^{2}_{phys})$$
 
 *Example:* For a missing Right Ventricular Systolic Pressure (RVSP), we assume a "normal" physiological state. Rather than imputing the cohort mean (which may be elevated due to severe mitral disease), we impute values centered around $25\text{ mmHg}$ with a small standard deviation ($\sigma \approx 4\text{ mmHg}$). This reflects a healthy pulmonary pressure range of $19\text{--}31\text{ mmHg}$.
-
-[//]: # (Imputation to restore physiologic variance)
 
 #### Imputation sensitivity analysis
 We plot **measured** (grey) vs. **imputed** (blue) to visually compare the distributions before and after the injection of Gaussian noise.

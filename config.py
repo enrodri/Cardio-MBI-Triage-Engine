@@ -68,13 +68,13 @@ class ClinicalConfig:
             'Beta_Blockers': ['Carvedilol', 'Bisoprolol', 'Propranolol', 'Metoprolol', 'Atenolol'],
             'RAAS_Inhibitors': ['Enalapril', 'Lisinopril', 'Losartan', 'Valsartan', 'Irbesartan', 'Captopril', 'Sacubitril-valsartan'],
             'Diuretics_Loop': ['Furosemide'],
-            'Diuretics_Other': ['Spironolactone', 'Espironolactone', 'Hydrochlorothiazide'],
-            'Anticoagulants_Antiplatelets': ['Warfarin', 'Warfarine', 'Rivaroxaban', 'Apixaban', 'Aspirin', 'Clopidogrel'],
+            'Diuretics_Other': ['Spironolactone', 'Hydrochlorothiazide'],
+            'Anticoagulants_Antiplatelets': ['Warfarin', 'Rivaroxaban', 'Apixaban', 'Aspirin', 'Clopidogrel'],
             'Rate_Rhythm_Control': ['Digoxin', 'Amiodarone'],
             'Calcium_Channel_Blockers': ['Nifedipine', 'Amlodipine'],
             'SGLT2_Inhibitors': ['Dapaglifozin', 'Empaglifozin'],
             'Pulmonary_Vasodilators': ['Sildenafil', 'Tadalafil'],
-            'Lipid_Lowering': ['Simvastatin', 'Rosuvastatin', 'Rosuvastatine', 'Gemfibrozil', 'Ciprofibrate'],
+            'Lipid_Lowering': ['Simvastatin', 'Rosuvastatin', 'Gemfibrozil', 'Ciprofibrate'],
             'Anti_Ischemic_Other': ['Trimetazidine', 'Ranolazine'],
             'Metabolic_Endocrine': ['Levothyroxine', 'Metformin']
         }
