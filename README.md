@@ -14,7 +14,7 @@
 * [Outcome: MBI-driven Triage](#-outcome-mbi-driven-triage)
 * [Data Context](#-data-context)
 * [Technical Structure](#-technical-structure)
-* [Database schema](#-database-schema)
+* [Database Schema and Governance](#-database-schema-and-governance)
 * [Data Integrity and Analysis](#-data-integrity-and-analysis)
   * [The Medication Burden Index (MBI)](#the-medication-burden-index-mbi)
   * [Imputation to restore physiologic variance](#imputation-to-restore-physiologic-variance)
