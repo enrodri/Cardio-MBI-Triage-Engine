@@ -1,0 +1,2511 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20261.26.0410.0924                               -->
+<workbook original-version='18.1' source-build='2026.1.1 (20261.26.0410.0924)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='db_mbi.csv (Multiple Connections)' inline='true' name='federated.10b4qmb1cdpskx1fb61b118w3dwx' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='db_mbi' name='textscan.1w3rzlo0cgq2nl1cwgkz2195ob5q'>
+            <connection class='textscan' directory='C:/Users/Admin/Documents/Git/Statistics/Cardio-MBI-Triage-Engine/data/processed' filename='db_mbi.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='db_patient' name='textscan.1untpuf1w68dak1ct2iwc1vmq70d'>
+            <connection class='textscan' directory='C:/Users/Admin/Documents/Git/Statistics/Cardio-MBI-Triage-Engine/data/processed' filename='db_patient.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='textscan.1w3rzlo0cgq2nl1cwgkz2195ob5q' name='db_mbi.csv' table='[db_mbi#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='integer' name='patient_id' ordinal='0' />
+              <column datatype='real' name='age' ordinal='1' />
+              <column datatype='string' name='gender' ordinal='2' />
+              <column datatype='real' name='mbi' ordinal='3' />
+              <column datatype='integer' name='lvef_score' ordinal='4' />
+              <column datatype='integer' name='complexity_score' ordinal='5' />
+              <column datatype='real' name='rvsp_imputed' ordinal='6' />
+              <column datatype='string' name='med_class' ordinal='7' />
+              <column datatype='string' name='med_name' ordinal='8' />
+              <column datatype='real' name='tdd' ordinal='9' />
+              <column datatype='real' name='mbi_contribution' ordinal='10' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1untpuf1w68dak1ct2iwc1vmq70d' name='db_patient.csv' table='[db_patient#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='integer' name='patient_id' ordinal='0' />
+              <column datatype='real' name='age' ordinal='1' />
+              <column datatype='string' name='gender' ordinal='2' />
+              <column datatype='real' name='sbp_r' ordinal='3' />
+              <column datatype='real' name='dbp_r' ordinal='4' />
+              <column datatype='real' name='heart_rate' ordinal='5' />
+              <column datatype='real' name='osat' ordinal='6' />
+              <column datatype='real' name='weight' ordinal='7' />
+              <column datatype='real' name='la_size_score' ordinal='8' />
+              <column datatype='integer' name='lvef_score' ordinal='9' />
+              <column datatype='integer' name='complexity_score' ordinal='10' />
+              <column datatype='real' name='mbi' ordinal='11' />
+              <column datatype='real' name='ms_mg_mmhg_imputed' ordinal='12' />
+              <column datatype='real' name='ao_v2_max_imputed' ordinal='13' />
+              <column datatype='real' name='rvsp_imputed' ordinal='14' />
+              <column datatype='real' name='lvidd_imputed' ordinal='15' />
+              <column datatype='string' name='timing' ordinal='16' />
+              <column datatype='string' name='approach' ordinal='17' />
+              <column datatype='real' name='sev_ms' ordinal='18' />
+              <column datatype='real' name='sev_mr' ordinal='19' />
+              <column datatype='real' name='sev_as' ordinal='20' />
+              <column datatype='real' name='sev_ar' ordinal='21' />
+              <column datatype='real' name='sev_ph' ordinal='22' />
+              <column datatype='integer' name='sev_septal' ordinal='23' />
+              <column datatype='integer' name='la_thrombus' ordinal='24' />
+              <column datatype='integer' name='la_mass' ordinal='25' />
+              <column datatype='integer' name='mixed_mitral' ordinal='26' />
+              <column datatype='integer' name='mixed_aortic' ordinal='27' />
+              <column datatype='integer' name='multi_valve' ordinal='28' />
+              <column datatype='integer' name='ph_significant' ordinal='29' />
+              <column datatype='integer' name='has_shunt' ordinal='30' />
+              <column datatype='integer' name='afib_present' ordinal='31' />
+              <column datatype='string' name='diagnosis' ordinal='32' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[afib_present]' value='[db_patient.csv].[afib_present]' />
+          <map key='[age (db_patient.csv)]' value='[db_patient.csv].[age]' />
+          <map key='[age]' value='[db_mbi.csv].[age]' />
+          <map key='[ao_v2_max_imputed]' value='[db_patient.csv].[ao_v2_max_imputed]' />
+          <map key='[approach]' value='[db_patient.csv].[approach]' />
+          <map key='[complexity_score (db_patient.csv)]' value='[db_patient.csv].[complexity_score]' />
+          <map key='[complexity_score]' value='[db_mbi.csv].[complexity_score]' />
+          <map key='[dbp_r]' value='[db_patient.csv].[dbp_r]' />
+          <map key='[diagnosis]' value='[db_patient.csv].[diagnosis]' />
+          <map key='[gender (db_patient.csv)]' value='[db_patient.csv].[gender]' />
+          <map key='[gender]' value='[db_mbi.csv].[gender]' />
+          <map key='[has_shunt]' value='[db_patient.csv].[has_shunt]' />
+          <map key='[heart_rate]' value='[db_patient.csv].[heart_rate]' />
+          <map key='[la_mass]' value='[db_patient.csv].[la_mass]' />
+          <map key='[la_size_score]' value='[db_patient.csv].[la_size_score]' />
+          <map key='[la_thrombus]' value='[db_patient.csv].[la_thrombus]' />
+          <map key='[lvef_score (db_patient.csv)]' value='[db_patient.csv].[lvef_score]' />
+          <map key='[lvef_score]' value='[db_mbi.csv].[lvef_score]' />
+          <map key='[lvidd_imputed]' value='[db_patient.csv].[lvidd_imputed]' />
+          <map key='[mbi (db_patient.csv)]' value='[db_patient.csv].[mbi]' />
+          <map key='[mbi]' value='[db_mbi.csv].[mbi]' />
+          <map key='[mbi_contribution]' value='[db_mbi.csv].[mbi_contribution]' />
+          <map key='[med_class]' value='[db_mbi.csv].[med_class]' />
+          <map key='[med_name]' value='[db_mbi.csv].[med_name]' />
+          <map key='[mixed_aortic]' value='[db_patient.csv].[mixed_aortic]' />
+          <map key='[mixed_mitral]' value='[db_patient.csv].[mixed_mitral]' />
+          <map key='[ms_mg_mmhg_imputed]' value='[db_patient.csv].[ms_mg_mmhg_imputed]' />
+          <map key='[multi_valve]' value='[db_patient.csv].[multi_valve]' />
+          <map key='[osat]' value='[db_patient.csv].[osat]' />
+          <map key='[patient_id (db_patient.csv)]' value='[db_patient.csv].[patient_id]' />
+          <map key='[patient_id]' value='[db_mbi.csv].[patient_id]' />
+          <map key='[ph_significant]' value='[db_patient.csv].[ph_significant]' />
+          <map key='[rvsp_imputed (db_patient.csv)]' value='[db_patient.csv].[rvsp_imputed]' />
+          <map key='[rvsp_imputed]' value='[db_mbi.csv].[rvsp_imputed]' />
+          <map key='[sbp_r]' value='[db_patient.csv].[sbp_r]' />
+          <map key='[sev_ar]' value='[db_patient.csv].[sev_ar]' />
+          <map key='[sev_as]' value='[db_patient.csv].[sev_as]' />
+          <map key='[sev_mr]' value='[db_patient.csv].[sev_mr]' />
+          <map key='[sev_ms]' value='[db_patient.csv].[sev_ms]' />
+          <map key='[sev_ph]' value='[db_patient.csv].[sev_ph]' />
+          <map key='[sev_septal]' value='[db_patient.csv].[sev_septal]' />
+          <map key='[tdd]' value='[db_mbi.csv].[tdd]' />
+          <map key='[timing]' value='[db_patient.csv].[timing]' />
+          <map key='[weight]' value='[db_patient.csv].[weight]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>patient_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[patient_id]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>patient_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>age</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[age]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>age</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gender</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[gender]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>gender</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mbi</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[mbi]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>mbi</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lvef_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[lvef_score]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>lvef_score</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>complexity_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[complexity_score]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>complexity_score</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rvsp_imputed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[rvsp_imputed]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>rvsp_imputed</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>med_class</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[med_class]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>med_class</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>med_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[med_name]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>med_name</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tdd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[tdd]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>tdd</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mbi_contribution</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[mbi_contribution]</local-name>
+            <parent-name>[db_mbi.csv]</parent-name>
+            <remote-alias>mbi_contribution</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>patient_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[patient_id (db_patient.csv)]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>patient_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>age</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[age (db_patient.csv)]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>age</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gender</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[gender (db_patient.csv)]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>gender</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sbp_r</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sbp_r]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>sbp_r</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dbp_r</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dbp_r]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>dbp_r</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>heart_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[heart_rate]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>heart_rate</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>osat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[osat]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>osat</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weight</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weight]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>weight</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>la_size_score</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[la_size_score]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>la_size_score</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lvef_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[lvef_score (db_patient.csv)]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>lvef_score</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>complexity_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[complexity_score (db_patient.csv)]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>complexity_score</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mbi</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[mbi (db_patient.csv)]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>mbi</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ms_mg_mmhg_imputed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ms_mg_mmhg_imputed]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>ms_mg_mmhg_imputed</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ao_v2_max_imputed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ao_v2_max_imputed]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>ao_v2_max_imputed</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rvsp_imputed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[rvsp_imputed (db_patient.csv)]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>rvsp_imputed</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lvidd_imputed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lvidd_imputed]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>lvidd_imputed</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>timing</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[timing]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>timing</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>approach</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[approach]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>approach</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sev_ms</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sev_ms]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>sev_ms</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sev_mr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sev_mr]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>sev_mr</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sev_as</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sev_as]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>sev_as</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sev_ar</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sev_ar]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>sev_ar</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sev_ph</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sev_ph]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>sev_ph</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sev_septal</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sev_septal]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>sev_septal</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>la_thrombus</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[la_thrombus]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>la_thrombus</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>la_mass</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[la_mass]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>la_mass</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mixed_mitral</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[mixed_mitral]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>mixed_mitral</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mixed_aortic</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[mixed_aortic]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>mixed_aortic</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>multi_valve</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[multi_valve]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>multi_valve</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ph_significant</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ph_significant]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>ph_significant</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>has_shunt</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[has_shunt]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>has_shunt</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>afib_present</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[afib_present]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>afib_present</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>diagnosis</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[diagnosis]</local-name>
+            <parent-name>[db_patient.csv]</parent-name>
+            <remote-alias>diagnosis</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='db_mbi.csv' datatype='table' name='[__tableau_internal_object_id__].[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]' role='measure' type='quantitative' />
+      <column caption='db_patient.csv' datatype='table' name='[__tableau_internal_object_id__].[db_patient.csv_035AB134907441C296313A499D9440FA]' role='measure' type='quantitative' />
+      <column caption='Afib Present' datatype='integer' name='[afib_present]' role='measure' type='quantitative' />
+      <column caption='Age (Db Patient.Csv)' datatype='real' name='[age (db_patient.csv)]' role='measure' type='quantitative' />
+      <column caption='Age' datatype='real' name='[age]' role='measure' type='quantitative' />
+      <column caption='Ao V2 Max Imputed' datatype='real' name='[ao_v2_max_imputed]' role='measure' type='quantitative' />
+      <column caption='Approach' datatype='string' name='[approach]' role='dimension' type='nominal' />
+      <column caption='Complexity Score (Db Patient.Csv)' datatype='integer' name='[complexity_score (db_patient.csv)]' role='measure' type='quantitative' />
+      <column caption='Complexity Score' datatype='integer' name='[complexity_score]' role='measure' type='quantitative' />
+      <column caption='Dbp R' datatype='real' name='[dbp_r]' role='measure' type='quantitative' />
+      <column caption='Diagnosis' datatype='string' name='[diagnosis]' role='dimension' type='nominal' />
+      <column caption='Gender (Db Patient.Csv)' datatype='string' name='[gender (db_patient.csv)]' role='dimension' type='nominal' />
+      <column caption='Gender' datatype='string' name='[gender]' role='dimension' type='nominal' />
+      <column caption='Has Shunt' datatype='integer' name='[has_shunt]' role='measure' type='quantitative' />
+      <column caption='Heart Rate' datatype='real' name='[heart_rate]' role='measure' type='quantitative' />
+      <column caption='La Mass' datatype='integer' name='[la_mass]' role='measure' type='quantitative' />
+      <column caption='La Size Score' datatype='real' name='[la_size_score]' role='measure' type='quantitative' />
+      <column caption='La Thrombus' datatype='integer' name='[la_thrombus]' role='measure' type='quantitative' />
+      <column caption='Lvef Score (Db Patient.Csv)' datatype='integer' name='[lvef_score (db_patient.csv)]' role='measure' type='quantitative' />
+      <column caption='Lvef Score' datatype='integer' name='[lvef_score]' role='measure' type='quantitative' />
+      <column caption='Lvidd Imputed' datatype='real' name='[lvidd_imputed]' role='measure' type='quantitative' />
+      <column caption='Mbi (Db Patient.Csv)' datatype='real' name='[mbi (db_patient.csv)]' role='measure' type='quantitative' />
+      <column caption='Mbi' datatype='real' name='[mbi]' role='measure' type='quantitative' />
+      <column caption='Mbi Contribution' datatype='real' name='[mbi_contribution]' role='measure' type='quantitative' />
+      <column caption='Med Class' datatype='string' name='[med_class]' role='dimension' type='nominal' />
+      <column caption='Med Name' datatype='string' name='[med_name]' role='dimension' type='nominal' />
+      <column caption='Mixed Aortic' datatype='integer' name='[mixed_aortic]' role='measure' type='quantitative' />
+      <column caption='Mixed Mitral' datatype='integer' name='[mixed_mitral]' role='measure' type='quantitative' />
+      <column caption='Ms Mg Mmhg Imputed' datatype='real' name='[ms_mg_mmhg_imputed]' role='measure' type='quantitative' />
+      <column caption='Multi Valve' datatype='integer' name='[multi_valve]' role='measure' type='quantitative' />
+      <column caption='Osat' datatype='real' name='[osat]' role='measure' type='quantitative' />
+      <column caption='Patient Id (Db Patient.Csv)' datatype='integer' name='[patient_id (db_patient.csv)]' role='dimension' type='ordinal' />
+      <column caption='Patient Id' datatype='integer' name='[patient_id]' role='dimension' type='ordinal' />
+      <column caption='Ph Significant' datatype='integer' name='[ph_significant]' role='measure' type='quantitative' />
+      <column caption='Rvsp Imputed (Db Patient.Csv)' datatype='real' name='[rvsp_imputed (db_patient.csv)]' role='measure' type='quantitative' />
+      <column caption='Rvsp Imputed' datatype='real' name='[rvsp_imputed]' role='measure' type='quantitative' />
+      <column caption='Sbp R' datatype='real' name='[sbp_r]' role='measure' type='quantitative' />
+      <column caption='Sev Ar' datatype='real' name='[sev_ar]' role='measure' type='quantitative' />
+      <column caption='Sev As' datatype='real' name='[sev_as]' role='measure' type='quantitative' />
+      <column caption='Sev Mr' datatype='real' name='[sev_mr]' role='measure' type='quantitative' />
+      <column caption='Sev Ms' datatype='real' name='[sev_ms]' role='measure' type='quantitative' />
+      <column caption='Sev Ph' datatype='real' name='[sev_ph]' role='measure' type='quantitative' />
+      <column caption='Sev Septal' datatype='integer' name='[sev_septal]' role='measure' type='quantitative' />
+      <column caption='Tdd' datatype='real' name='[tdd]' role='measure' type='quantitative' />
+      <column caption='Timing' datatype='string' name='[timing]' role='dimension' type='nominal' />
+      <column caption='Weight' datatype='real' name='[weight]' role='measure' type='quantitative' />
+      <column-instance column='[med_name]' derivation='None' name='[none:med_name:nk]' pivot='key' type='nominal' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/Admin/AppData/Local/Temp/TableauTemp/#TableauTemp_06d8rbx0288ewp1crx1t00un7xba.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='05/18/2026 03:51:14 AM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA' table='[Extract].[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]' type='table' />
+            <relation name='db_patient.csv_035AB134907441C296313A499D9440FA' table='[Extract].[db_patient.csv_035AB134907441C296313A499D9440FA]' type='table' />
+          </relation>
+          <cols>
+            <map key='[afib_present]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[afib_present]' />
+            <map key='[age (db_patient.csv)]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[age]' />
+            <map key='[age]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[age]' />
+            <map key='[ao_v2_max_imputed]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[ao_v2_max_imputed]' />
+            <map key='[approach]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[approach]' />
+            <map key='[complexity_score (db_patient.csv)]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[complexity_score]' />
+            <map key='[complexity_score]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[complexity_score]' />
+            <map key='[dbp_r]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[dbp_r]' />
+            <map key='[diagnosis]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[diagnosis]' />
+            <map key='[gender (db_patient.csv)]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[gender]' />
+            <map key='[gender]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[gender]' />
+            <map key='[has_shunt]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[has_shunt]' />
+            <map key='[heart_rate]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[heart_rate]' />
+            <map key='[la_mass]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[la_mass]' />
+            <map key='[la_size_score]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[la_size_score]' />
+            <map key='[la_thrombus]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[la_thrombus]' />
+            <map key='[lvef_score (db_patient.csv)]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[lvef_score]' />
+            <map key='[lvef_score]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[lvef_score]' />
+            <map key='[lvidd_imputed]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[lvidd_imputed]' />
+            <map key='[mbi (db_patient.csv)]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[mbi]' />
+            <map key='[mbi]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[mbi]' />
+            <map key='[mbi_contribution]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[mbi_contribution]' />
+            <map key='[med_class]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[med_class]' />
+            <map key='[med_name]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[med_name]' />
+            <map key='[mixed_aortic]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[mixed_aortic]' />
+            <map key='[mixed_mitral]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[mixed_mitral]' />
+            <map key='[ms_mg_mmhg_imputed]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[ms_mg_mmhg_imputed]' />
+            <map key='[multi_valve]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[multi_valve]' />
+            <map key='[osat]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[osat]' />
+            <map key='[patient_id (db_patient.csv)]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[patient_id]' />
+            <map key='[patient_id]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[patient_id]' />
+            <map key='[ph_significant]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[ph_significant]' />
+            <map key='[rvsp_imputed (db_patient.csv)]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[rvsp_imputed]' />
+            <map key='[rvsp_imputed]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[rvsp_imputed]' />
+            <map key='[sbp_r]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[sbp_r]' />
+            <map key='[sev_ar]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[sev_ar]' />
+            <map key='[sev_as]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[sev_as]' />
+            <map key='[sev_mr]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[sev_mr]' />
+            <map key='[sev_ms]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[sev_ms]' />
+            <map key='[sev_ph]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[sev_ph]' />
+            <map key='[sev_septal]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[sev_septal]' />
+            <map key='[tdd]' value='[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA].[tdd]' />
+            <map key='[timing]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[timing]' />
+            <map key='[weight]' value='[db_patient.csv_035AB134907441C296313A499D9440FA].[weight]' />
+          </cols>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>patient_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[patient_id]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>patient_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>139</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>age</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[age]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>age</remote-alias>
+              <ordinal>1</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>52</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>gender</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[gender]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>gender</remote-alias>
+              <ordinal>2</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mbi</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[mbi]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>mbi</remote-alias>
+              <ordinal>3</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>61</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>lvef_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[lvef_score]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>lvef_score</remote-alias>
+              <ordinal>4</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>complexity_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[complexity_score]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>complexity_score</remote-alias>
+              <ordinal>5</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rvsp_imputed</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[rvsp_imputed]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>rvsp_imputed</remote-alias>
+              <ordinal>6</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>85</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>med_class</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[med_class]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>med_class</remote-alias>
+              <ordinal>7</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>med_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[med_name]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>med_name</remote-alias>
+              <ordinal>8</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>35</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>tdd</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[tdd]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>tdd</remote-alias>
+              <ordinal>9</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>35</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mbi_contribution</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[mbi_contribution]</local-name>
+              <parent-name>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</parent-name>
+              <remote-alias>mbi_contribution</remote-alias>
+              <ordinal>10</ordinal>
+              <family>db_mbi.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>28</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>patient_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[patient_id (db_patient.csv)]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>patient_id</remote-alias>
+              <ordinal>11</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>152</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>age</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[age (db_patient.csv)]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>age</remote-alias>
+              <ordinal>12</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>55</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>gender</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[gender (db_patient.csv)]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>gender</remote-alias>
+              <ordinal>13</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sbp_r</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[sbp_r]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>sbp_r</remote-alias>
+              <ordinal>14</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>59</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>dbp_r</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[dbp_r]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>dbp_r</remote-alias>
+              <ordinal>15</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>heart_rate</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[heart_rate]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>heart_rate</remote-alias>
+              <ordinal>16</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>48</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>osat</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[osat]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>osat</remote-alias>
+              <ordinal>17</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>20</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>weight</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[weight]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>weight</remote-alias>
+              <ordinal>18</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>64</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>la_size_score</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[la_size_score]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>la_size_score</remote-alias>
+              <ordinal>19</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>lvef_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[lvef_score (db_patient.csv)]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>lvef_score</remote-alias>
+              <ordinal>20</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>complexity_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[complexity_score (db_patient.csv)]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>complexity_score</remote-alias>
+              <ordinal>21</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mbi</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[mbi (db_patient.csv)]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>mbi</remote-alias>
+              <ordinal>22</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>62</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ms_mg_mmhg_imputed</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[ms_mg_mmhg_imputed]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>ms_mg_mmhg_imputed</remote-alias>
+              <ordinal>23</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>40</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ao_v2_max_imputed</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[ao_v2_max_imputed]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>ao_v2_max_imputed</remote-alias>
+              <ordinal>24</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>32</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rvsp_imputed</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[rvsp_imputed (db_patient.csv)]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>rvsp_imputed</remote-alias>
+              <ordinal>25</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>89</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>lvidd_imputed</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[lvidd_imputed]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>lvidd_imputed</remote-alias>
+              <ordinal>26</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>31</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>timing</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[timing]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>timing</remote-alias>
+              <ordinal>27</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>approach</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[approach]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>approach</remote-alias>
+              <ordinal>28</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sev_ms</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[sev_ms]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>sev_ms</remote-alias>
+              <ordinal>29</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sev_mr</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[sev_mr]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>sev_mr</remote-alias>
+              <ordinal>30</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sev_as</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[sev_as]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>sev_as</remote-alias>
+              <ordinal>31</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sev_ar</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[sev_ar]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>sev_ar</remote-alias>
+              <ordinal>32</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sev_ph</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[sev_ph]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>sev_ph</remote-alias>
+              <ordinal>33</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sev_septal</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[sev_septal]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>sev_septal</remote-alias>
+              <ordinal>34</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>la_thrombus</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[la_thrombus]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>la_thrombus</remote-alias>
+              <ordinal>35</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>la_mass</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[la_mass]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>la_mass</remote-alias>
+              <ordinal>36</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mixed_mitral</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[mixed_mitral]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>mixed_mitral</remote-alias>
+              <ordinal>37</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mixed_aortic</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[mixed_aortic]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>mixed_aortic</remote-alias>
+              <ordinal>38</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>multi_valve</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[multi_valve]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>multi_valve</remote-alias>
+              <ordinal>39</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ph_significant</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[ph_significant]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>ph_significant</remote-alias>
+              <ordinal>40</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>has_shunt</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[has_shunt]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>has_shunt</remote-alias>
+              <ordinal>41</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>afib_present</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[afib_present]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>afib_present</remote-alias>
+              <ordinal>42</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>diagnosis</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[diagnosis]</local-name>
+              <parent-name>[db_patient.csv_035AB134907441C296313A499D9440FA]</parent-name>
+              <remote-alias>diagnosis</remote-alias>
+              <ordinal>43</ordinal>
+              <family>db_patient.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>71</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[db_patient.csv_035AB134907441C296313A499D9440FA]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:med_name:nk]' palette='sf_water' type='palette'>
+            <map to='#051c61'>
+              <bucket>&quot;Bisoprolol&quot;</bucket>
+            </map>
+            <map to='#051c61'>
+              <bucket>&quot;Digoxin&quot;</bucket>
+            </map>
+            <map to='#051c61'>
+              <bucket>&quot;Irbesartan&quot;</bucket>
+            </map>
+            <map to='#051c61'>
+              <bucket>&quot;Nifedipine&quot;</bucket>
+            </map>
+            <map to='#051c61'>
+              <bucket>&quot;Simvastatin&quot;</bucket>
+            </map>
+            <map to='#073e92'>
+              <bucket>&quot;Atenolol&quot;</bucket>
+            </map>
+            <map to='#073e92'>
+              <bucket>&quot;Dapaglifozin&quot;</bucket>
+            </map>
+            <map to='#073e92'>
+              <bucket>&quot;Hydrochlorothiazide&quot;</bucket>
+            </map>
+            <map to='#073e92'>
+              <bucket>&quot;Metoprolol&quot;</bucket>
+            </map>
+            <map to='#073e92'>
+              <bucket>&quot;Sildenafil&quot;</bucket>
+            </map>
+            <map to='#073e92'>
+              <bucket>&quot;Warfarin&quot;</bucket>
+            </map>
+            <map to='#0e6ece'>
+              <bucket>&quot;Aspirin&quot;</bucket>
+            </map>
+            <map to='#0e6ece'>
+              <bucket>&quot;Clopidogrel&quot;</bucket>
+            </map>
+            <map to='#0e6ece'>
+              <bucket>&quot;Gemfibrozil&quot;</bucket>
+            </map>
+            <map to='#0e6ece'>
+              <bucket>&quot;Metformin&quot;</bucket>
+            </map>
+            <map to='#0e6ece'>
+              <bucket>&quot;Rosuvastatin&quot;</bucket>
+            </map>
+            <map to='#0e6ece'>
+              <bucket>&quot;Valsartan&quot;</bucket>
+            </map>
+            <map to='#2d9ced'>
+              <bucket>&quot;Apixaban&quot;</bucket>
+            </map>
+            <map to='#2d9ced'>
+              <bucket>&quot;Ciprofibrate&quot;</bucket>
+            </map>
+            <map to='#2d9ced'>
+              <bucket>&quot;Furosemide&quot;</bucket>
+            </map>
+            <map to='#2d9ced'>
+              <bucket>&quot;Losartan&quot;</bucket>
+            </map>
+            <map to='#2d9ced'>
+              <bucket>&quot;Rivaroxaban&quot;</bucket>
+            </map>
+            <map to='#2d9ced'>
+              <bucket>&quot;Trimetazidine&quot;</bucket>
+            </map>
+            <map to='#68ceee'>
+              <bucket>&quot;Amlodipine&quot;</bucket>
+            </map>
+            <map to='#68ceee'>
+              <bucket>&quot;Carvedilol&quot;</bucket>
+            </map>
+            <map to='#68ceee'>
+              <bucket>&quot;Enalapril&quot;</bucket>
+            </map>
+            <map to='#68ceee'>
+              <bucket>&quot;Lisinopril&quot;</bucket>
+            </map>
+            <map to='#68ceee'>
+              <bucket>&quot;Ranolazine&quot;</bucket>
+            </map>
+            <map to='#68ceee'>
+              <bucket>&quot;Tadalafil&quot;</bucket>
+            </map>
+            <map to='#96f2ee'>
+              <bucket>&quot;Amiodarone&quot;</bucket>
+            </map>
+            <map to='#96f2ee'>
+              <bucket>&quot;Captopril&quot;</bucket>
+            </map>
+            <map to='#96f2ee'>
+              <bucket>&quot;Empaglifozin&quot;</bucket>
+            </map>
+            <map to='#96f2ee'>
+              <bucket>&quot;Levothyroxine&quot;</bucket>
+            </map>
+            <map to='#96f2ee'>
+              <bucket>&quot;Propranolol&quot;</bucket>
+            </map>
+            <map to='#96f2ee'>
+              <bucket>&quot;Spironolactone&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Nicaragua&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='db_mbi.csv' id='db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA'>
+            <properties context=''>
+              <relation connection='textscan.1w3rzlo0cgq2nl1cwgkz2195ob5q' name='db_mbi.csv' table='[db_mbi#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='patient_id' ordinal='0' />
+                  <column datatype='real' name='age' ordinal='1' />
+                  <column datatype='string' name='gender' ordinal='2' />
+                  <column datatype='real' name='mbi' ordinal='3' />
+                  <column datatype='integer' name='lvef_score' ordinal='4' />
+                  <column datatype='integer' name='complexity_score' ordinal='5' />
+                  <column datatype='real' name='rvsp_imputed' ordinal='6' />
+                  <column datatype='string' name='med_class' ordinal='7' />
+                  <column datatype='string' name='med_name' ordinal='8' />
+                  <column datatype='real' name='tdd' ordinal='9' />
+                  <column datatype='real' name='mbi_contribution' ordinal='10' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA' table='[Extract].[db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA]' type='table' />
+            </properties>
+          </object>
+          <object caption='db_patient.csv' id='db_patient.csv_035AB134907441C296313A499D9440FA'>
+            <properties context=''>
+              <relation connection='textscan.1untpuf1w68dak1ct2iwc1vmq70d' name='db_patient.csv' table='[db_patient#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='patient_id' ordinal='0' />
+                  <column datatype='real' name='age' ordinal='1' />
+                  <column datatype='string' name='gender' ordinal='2' />
+                  <column datatype='real' name='sbp_r' ordinal='3' />
+                  <column datatype='real' name='dbp_r' ordinal='4' />
+                  <column datatype='real' name='heart_rate' ordinal='5' />
+                  <column datatype='real' name='osat' ordinal='6' />
+                  <column datatype='real' name='weight' ordinal='7' />
+                  <column datatype='real' name='la_size_score' ordinal='8' />
+                  <column datatype='integer' name='lvef_score' ordinal='9' />
+                  <column datatype='integer' name='complexity_score' ordinal='10' />
+                  <column datatype='real' name='mbi' ordinal='11' />
+                  <column datatype='real' name='ms_mg_mmhg_imputed' ordinal='12' />
+                  <column datatype='real' name='ao_v2_max_imputed' ordinal='13' />
+                  <column datatype='real' name='rvsp_imputed' ordinal='14' />
+                  <column datatype='real' name='lvidd_imputed' ordinal='15' />
+                  <column datatype='string' name='timing' ordinal='16' />
+                  <column datatype='string' name='approach' ordinal='17' />
+                  <column datatype='real' name='sev_ms' ordinal='18' />
+                  <column datatype='real' name='sev_mr' ordinal='19' />
+                  <column datatype='real' name='sev_as' ordinal='20' />
+                  <column datatype='real' name='sev_ar' ordinal='21' />
+                  <column datatype='real' name='sev_ph' ordinal='22' />
+                  <column datatype='integer' name='sev_septal' ordinal='23' />
+                  <column datatype='integer' name='la_thrombus' ordinal='24' />
+                  <column datatype='integer' name='la_mass' ordinal='25' />
+                  <column datatype='integer' name='mixed_mitral' ordinal='26' />
+                  <column datatype='integer' name='mixed_aortic' ordinal='27' />
+                  <column datatype='integer' name='multi_valve' ordinal='28' />
+                  <column datatype='integer' name='ph_significant' ordinal='29' />
+                  <column datatype='integer' name='has_shunt' ordinal='30' />
+                  <column datatype='integer' name='afib_present' ordinal='31' />
+                  <column datatype='string' name='diagnosis' ordinal='32' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='db_patient.csv_035AB134907441C296313A499D9440FA' table='[Extract].[db_patient.csv_035AB134907441C296313A499D9440FA]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[patient_id]' />
+              <expression op='[patient_id (db_patient.csv)]' />
+            </expression>
+            <first-end-point object-id='db_mbi.csv_0F4EFC26164A4BD1B1D38DBFC1B30EEA' />
+            <second-end-point object-id='db_patient.csv_035AB134907441C296313A499D9440FA' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='db_mbi.csv (Multiple Connections)' name='federated.10b4qmb1cdpskx1fb61b118w3dwx' />
+          </datasources>
+          <datasource-dependencies datasource='federated.10b4qmb1cdpskx1fb61b118w3dwx'>
+            <column caption='Mbi Contribution' datatype='real' name='[mbi_contribution]' role='measure' type='quantitative' />
+            <column caption='Med Class' datatype='string' name='[med_class]' role='dimension' type='nominal' />
+            <column caption='Med Name' datatype='string' name='[med_name]' role='dimension' type='nominal' />
+            <column-instance column='[med_class]' derivation='None' name='[none:med_class:nk]' pivot='key' type='nominal' />
+            <column-instance column='[med_name]' derivation='None' name='[none:med_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[mbi_contribution]' derivation='Sum' name='[sum:mbi_contribution:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.10b4qmb1cdpskx1fb61b118w3dwx].[none:med_class:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.10b4qmb1cdpskx1fb61b118w3dwx].[sum:mbi_contribution:qk]' shelf='rows' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.10b4qmb1cdpskx1fb61b118w3dwx].[none:med_name:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.10b4qmb1cdpskx1fb61b118w3dwx].[none:med_class:nk]</rows>
+        <cols>[federated.10b4qmb1cdpskx1fb61b118w3dwx].[sum:mbi_contribution:qk]</cols>
+      </table>
+      <simple-id uuid='{1DB5228A-64DB-424C-AAF5-FD32F00097C0}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.10b4qmb1cdpskx1fb61b118w3dwx].[none:med_name:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.10b4qmb1cdpskx1fb61b118w3dwx].[none:med_class:nk]</field>
+            <field>[federated.10b4qmb1cdpskx1fb61b118w3dwx].[none:med_name:nk]</field>
+            <field>[federated.10b4qmb1cdpskx1fb61b118w3dwx].[sum:lvef_score:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{3E2FDB31-6641-40A1-8809-4F47B013ED05}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='384' name='Sheet 1' width='384'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
